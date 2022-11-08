@@ -53,13 +53,17 @@ class WebDriver(BaseWebDriver):
         if desired_capabilities:
             chrome_capabilities.update(desired_capabilities)
 
-        self.driver = Chrome(
-            chrome_options=options, desired_capabilities=chrome_capabilities, **kwargs
-        )
+#         self.driver = Chrome(
+#             chrome_options=options, desired_capabilities=chrome_capabilities, **kwargs
+#         )
         self.element_class = WebDriverElement
         self._cookie_manager = CookieManager(self.driver)
 
         super(WebDriver, self).__init__(wait_time)
+        
+        self.driver = Chrome(
+            chrome_options=options, desired_capabilities=chrome_capabilities, **kwargs
+        )
 
 
 _DRIVERS["chrome"] = WebDriver
